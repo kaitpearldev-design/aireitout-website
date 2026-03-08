@@ -1,26 +1,140 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #FAF8F4;
+  color: #1C1A17;
+  font-family: 'Jost', 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* ── Scroll reveal ────────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.22s; }
+.reveal-delay-3 { transition-delay: 0.36s; }
+.reveal-delay-4 { transition-delay: 0.52s; }
+
+
+/* ── Breathing ring animation ─────────────────────────────────────────── */
+@keyframes breathe {
+  0%, 100% { transform: scale(1);   opacity: 0.15; }
+  50%       { transform: scale(1.9); opacity: 0;    }
+}
+.breathing-ring {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+/* ── Feature cards ────────────────────────────────────────────────────── */
+.feature-card {
+  position: relative;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.feature-card::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #6B8F71;
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 40px rgba(28, 26, 23, 0.08);
+  z-index: 1;
+}
+.feature-card:hover::after {
+  transform: scaleY(1);
+}
+
+/* ── Ritual / Privacy cards ───────────────────────────────────────────── */
+.lift-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lift-card:hover {
+  transform: translateY(-2px);
+}
+
+/* ── Nav link underline ───────────────────────────────────────────────── */
+.nav-underline {
+  position: relative;
+}
+.nav-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #1C1A17;
+  transition: width 0.25s ease;
+}
+.nav-underline:hover::after {
+  width: 100%;
+}
+
+/* ── Prose — legal pages ──────────────────────────────────────────────── */
+.prose-aire p {
+  color: #1C1A17;
+  line-height: 1.85;
+  margin-bottom: 1.1rem;
+  font-size: 15px;
+}
+.prose-aire h3 {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #1C1A17;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+.prose-aire ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.1rem 0;
+}
+.prose-aire ul li {
+  color: #1C1A17;
+  font-size: 15px;
+  line-height: 1.75;
+  padding-left: 1.2rem;
+  position: relative;
+  margin-bottom: 0.45rem;
+}
+.prose-aire ul li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: #6B8F71;
+  opacity: 0.7;
+}
+.prose-aire strong {
+  font-weight: 600;
+  color: #1C1A17;
 }
