@@ -134,7 +134,8 @@ export default function Home() {
                 </span>
               </div>
 
-              <h1
+              <h1 className="sr-only">Voice Journal App with AI Reflections — Aire It Out</h1>
+              <p
                 style={{ fontFamily: "var(--font-cormorant)" }}
                 className="reveal reveal-delay-1 text-[clamp(3.6rem,6vw,5.5rem)] font-light text-[#1C1A17] leading-[0.95] tracking-tight mb-6"
               >
@@ -142,22 +143,21 @@ export default function Home() {
                 <em className="italic text-[#6B8F71]">Feel it.</em>
                 <br />
                 Let&nbsp;go.
-              </h1>
+              </p>
 
               <div className="reveal reveal-delay-2 mb-7">
                 <WaveDecoration />
               </div>
 
               <p className="reveal reveal-delay-2 text-[16px] text-[#8A8078] leading-[1.85] mb-10 max-w-[380px]" style={{ fontWeight: 300 }}>
-                The journal that listens. Speak freely, tag how you feel, and
-                receive gentle AI reflections you&apos;ll actually want to keep.
+                Speak freely — receive a reflection that actually gets it.
               </p>
 
               <div className="reveal reveal-delay-3 mb-8">
                 <StoreBadges />
               </div>
 
-              <p className="reveal reveal-delay-3 text-[12px] text-[#8A8078]/50 tracking-wide">
+              <p className="reveal reveal-delay-3 text-[13px] text-[#8A8078]/70 tracking-wide">
                 Free to download · iOS &amp; Android
               </p>
             </div>
@@ -832,7 +832,7 @@ function StoreBadges({ centered }: { centered?: boolean }) {
       }`}
     >
       <a
-        href="https://apps.apple.com/app/aireitout/idXXXXXXXXXX"
+        href="https://apps.apple.com/app/aire-it-out-voice-journal/id6759711606"
         aria-label="Download on the App Store"
         className="inline-block transition-opacity duration-200 hover:opacity-75"
         style={{ lineHeight: 0 }}

@@ -37,9 +37,12 @@ export default function Footer() {
         </div>
 
         <div className="mt-14 pt-6 border-t border-[#1C1A17]/6 flex flex-col gap-4">
-          <p className="text-[11px] text-[#8A8078]/55 leading-relaxed max-w-2xl">
-            Aire It Out is not a mental health service. If you need support: call or text{" "}
-            <span className="text-[#8A8078]/80">988</span> (US) or visit{" "}
+          <p className="text-[12px] text-[#8A8078]/70 leading-relaxed max-w-2xl">
+            Aire It Out is not a mental health service.{" "}
+            <a href="/help#crisis-resources" className="underline underline-offset-2 decoration-[#8A8078]/30 hover:text-[#1C1A17] transition-colors">
+              In crisis? Call or text 988
+            </a>{" "}
+            (US, 24/7) or visit{" "}
             <a href="https://findahelpline.com" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 decoration-[#8A8078]/30 hover:text-[#8A8078] transition-colors">
               findahelpline.com
             </a>

@@ -16,6 +16,7 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://aireitout.app"),
   title: "Aire It Out — Voice Journal with AI Reflections",
   description:
     "Aire It Out is a voice journaling app that turns your spoken words into AI reflections, morning intentions, and a personal night sky of memories. Free on iOS and Android.",
@@ -31,6 +32,21 @@ export const metadata: Metadata = {
     url: "https://aireitout.app",
     siteName: "Aire It Out",
     type: "website",
+    images: [
+      {
+        url: "https://aireitout.app/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Aire It Out — Voice Journal with AI Reflections",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Aire It Out — Voice Journal with AI Reflections",
+    description:
+      "Speak freely. Get gentle AI reflections. Watch your words become stars in your personal night sky. Free on iOS and Android.",
+    images: ["https://aireitout.app/opengraph-image"],
   },
 };
 
