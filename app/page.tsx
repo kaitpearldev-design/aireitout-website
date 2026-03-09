@@ -29,7 +29,6 @@ const freeFeatures = [
   "Daily streaks & achievements",
   "Time Capsules (7, 30 & 90-day locks)",
   "Entry sharing with expiring links",
-  "Night Sky (limited)",
   "App Lock (PIN, Face ID)",
   "CSV export + single-entry PDF",
 ];
