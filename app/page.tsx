@@ -105,15 +105,10 @@ export default function Home() {
       <Nav />
 
       {/* ── HERO ────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background texture */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage:
-              "radial-gradient(ellipse 80% 60% at 70% 40%, rgba(107,143,113,0.08) 0%, transparent 70%), radial-gradient(ellipse 50% 40% at 10% 80%, rgba(107,143,113,0.05) 0%, transparent 60%)",
-          }}
-        />
+      <section
+        className="relative flex items-center justify-center overflow-hidden"
+        style={{ minHeight: "85vh", paddingTop: 80 }}
+      >
         {/* Grain overlay */}
         <div
           className="absolute inset-0 pointer-events-none opacity-[0.025]"
@@ -123,49 +118,66 @@ export default function Home() {
           }}
         />
 
-        <div className="max-w-6xl mx-auto px-8 pt-28 pb-20 w-full relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 xl:gap-20 items-center">
-            {/* Left */}
-            <div>
-              <div className="reveal reveal-delay-1 inline-flex items-center gap-2 mb-8">
-                <span className="text-[11px] font-semibold tracking-[0.18em] uppercase text-[#6B8F71]">
-                  Voice Journal
-                </span>
-              </div>
+        {/* Orb */}
+        <HeroOrb />
 
-              <h1 className="sr-only">Voice Journal App with AI Reflections — Aire It Out</h1>
-              <p
-                style={{ fontFamily: "var(--font-cormorant)" }}
-                className="reveal reveal-delay-1 text-[clamp(3.6rem,6vw,5.5rem)] font-light text-[#1C1A17] leading-[0.95] tracking-tight mb-6"
-              >
-                Say it.{" "}
-                <em className="italic text-[#6B8F71]">Feel it.</em>
-                <br />
-                Let&nbsp;go.
-              </p>
+        {/* Text */}
+        <div
+          className="relative z-10 flex flex-col items-center text-center px-6"
+          style={{ maxWidth: 600 }}
+        >
+          <h1 className="sr-only">Voice Journal App with AI Reflections — Aire It Out</h1>
 
-              <div className="reveal reveal-delay-2 mb-7">
-                <WaveDecoration />
-              </div>
+          <span
+            className="hero-eyebrow block mb-5 font-semibold uppercase text-[#6B8F71]"
+            style={{ fontSize: 13, letterSpacing: "2px" }}
+          >
+            Voice Journal
+          </span>
 
-              <p className="reveal reveal-delay-2 text-[16px] text-[#8A8078] leading-[1.85] mb-10 max-w-[380px]" style={{ fontWeight: 300 }}>
-                A journal that starts with your voice. Everything else follows.
-              </p>
+          <p
+            className="hero-headline mb-6"
+            style={{
+              fontFamily: "var(--font-dm-serif)",
+              fontSize: "clamp(42px, 7vw, 64px)",
+              lineHeight: 1.1,
+              color: "#2C3E2D",
+            }}
+          >
+            Say it.{" "}
+            <em style={{ color: "#6B8F71" }}>Feel it.</em>
+            {" "}Let&nbsp;go.
+          </p>
 
-              <div className="reveal reveal-delay-3 mb-8">
-                <StoreBadges />
-              </div>
+          <p
+            className="hero-sub mb-10 leading-[1.8]"
+            style={{
+              fontSize: "clamp(16px, 2.5vw, 19px)",
+              color: "rgba(44,62,45,0.5)",
+              maxWidth: 460,
+              fontWeight: 300,
+            }}
+          >
+            A journal that starts with your voice. Everything else follows.
+          </p>
 
-              <p className="reveal reveal-delay-3 text-[13px] text-[#8A8078]/70 tracking-wide">
-                Free to download · iOS &amp; Android
-              </p>
-            </div>
-
-            {/* Right — phone mockup */}
-            <div className="reveal reveal-delay-2 flex justify-center lg:justify-end">
-              <PhoneMockupHero />
-            </div>
+          <div className="hero-badges mb-5">
+            <StoreBadges centered />
           </div>
+
+          <p
+            className="hero-free"
+            style={{ fontSize: 13, color: "rgba(138,128,120,0.7)", letterSpacing: "0.04em" }}
+          >
+            Free to download · iOS &amp; Android
+          </p>
+        </div>
+
+        {/* Scroll hint */}
+        <div className="hero-scroll-hint" aria-hidden="true">
+          <svg width="20" height="12" viewBox="0 0 20 12" fill="none">
+            <path d="M1 1L10 10L19 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </div>
       </section>
 
@@ -527,80 +539,78 @@ export default function Home() {
   );
 }
 
-/* ── Phone mockup — Hero ──────────────────────────────────────────────── */
-function PhoneMockupHero() {
+/* ── Hero orb ─────────────────────────────────────────────────────────── */
+function HeroOrb() {
+  const waveHeights = Array.from({ length: 28 }, (_, i) =>
+    Math.round(Math.sin(i * 0.5) * 8 + 10)
+  );
+
+  const particles: {
+    top: string; left: string; size: number;
+    type: "a" | "b"; dur: number; del: number;
+  }[] = [
+    { top: "15%", left: "20%", size: 4, type: "a", dur: 9,  del: 0   },
+    { top: "25%", left: "78%", size: 3, type: "b", dur: 11, del: 1.5 },
+    { top: "60%", left: "12%", size: 5, type: "a", dur: 8,  del: 0.8 },
+    { top: "70%", left: "82%", size: 3, type: "b", dur: 10, del: 2.3 },
+    { top: "10%", left: "55%", size: 4, type: "a", dur: 7,  del: 3.1 },
+    { top: "80%", left: "40%", size: 3, type: "b", dur: 9,  del: 1.0 },
+    { top: "45%", left: "5%",  size: 5, type: "a", dur: 11, del: 4.2 },
+    { top: "88%", left: "65%", size: 4, type: "b", dur: 8,  del: 2.8 },
+  ];
+
   return (
-    <div className="relative" style={{ width: 250 }}>
-      <div className="absolute inset-[-20%] bg-[#6B8F71]/10 blur-3xl rounded-full pointer-events-none" />
-      <div
-        className="relative rounded-[44px] overflow-hidden border-[6px] border-[#1C1A17]"
-        style={{
-          aspectRatio: "9/19.5",
-          background: "linear-gradient(160deg, #EDE9E2 0%, #E3DDD6 50%, #DAD4CC 100%)",
-          boxShadow: "0 30px 80px rgba(28,26,23,0.14), inset 0 1px 0 rgba(255,255,255,0.4)",
-        }}
-      >
-        {/* Status bar */}
-        <div className="absolute top-4 inset-x-0 flex justify-between px-6">
-          <div className="h-1.5 w-8 rounded-full bg-[#1C1A17]/15" />
-          <div className="flex gap-1 items-center">
-            <div className="w-1 h-1 rounded-full bg-[#1C1A17]/20" />
-            <div className="w-1 h-1 rounded-full bg-[#1C1A17]/20" />
-            <div className="w-3 h-1.5 rounded-full bg-[#1C1A17]/20" />
-          </div>
-        </div>
-
-        <div className="absolute inset-x-5 top-11 flex flex-col gap-2.5">
-          {/* Header */}
-          <div className="flex justify-between items-center mb-1">
-            <div className="h-2 w-20 rounded-full bg-[#1C1A17]/18" />
-            <div className="w-7 h-7 rounded-full bg-[#6B8F71]/25" />
-          </div>
-          {/* Mood strip */}
-          <div className="h-9 w-full rounded-2xl bg-[#6B8F71]/10 flex items-center px-3 gap-2">
-            <div className="w-4 h-4 rounded-full bg-[#6B8F71]/35" />
-            <div className="h-1.5 w-14 rounded-full bg-[#1C1A17]/12" />
-            <div className="ml-auto h-1.5 w-10 rounded-full bg-[#1C1A17]/8" />
-          </div>
-          {/* Entry card 1 */}
-          <div className="h-20 w-full rounded-2xl bg-white/40 p-3 flex flex-col gap-1.5">
-            <div className="flex gap-2 items-center">
-              <div className="w-3 h-3 rounded-full bg-[#6B8F71]/30" />
-              <div className="h-1.5 w-16 rounded-full bg-[#1C1A17]/18" />
-            </div>
-            <div className="h-1.5 w-full rounded-full bg-[#1C1A17]/10" />
-            <div className="h-1.5 w-4/5 rounded-full bg-[#1C1A17]/8" />
-            <div className="h-1.5 w-2/3 rounded-full bg-[#1C1A17]/6" />
-          </div>
-          {/* Entry card 2 */}
-          <div className="h-14 w-full rounded-2xl bg-white/25 p-3 flex flex-col gap-1.5">
-            <div className="flex gap-2 items-center">
-              <div className="w-2.5 h-2.5 rounded-full bg-[#8A8078]/25" />
-              <div className="h-1.5 w-12 rounded-full bg-[#1C1A17]/14" />
-            </div>
-            <div className="h-1.5 w-full rounded-full bg-[#1C1A17]/8" />
-            <div className="h-1.5 w-3/4 rounded-full bg-[#1C1A17]/6" />
-          </div>
-          {/* Entry card 3 */}
-          <div className="h-11 w-full rounded-2xl bg-white/18 p-3 flex flex-col gap-1.5">
-            <div className="h-1.5 w-14 rounded-full bg-[#1C1A17]/12" />
-            <div className="h-1.5 w-2/3 rounded-full bg-[#1C1A17]/7" />
-          </div>
-        </div>
-
-        {/* Record button */}
-        <div className="absolute inset-x-5 bottom-7">
-          <div className="h-12 w-full rounded-2xl bg-[#6B8F71]/18 flex items-center justify-center gap-2.5 border border-[#6B8F71]/15">
-            <div className="w-2.5 h-2.5 rounded-full bg-[#6B8F71]/60" />
-            <div className="flex gap-0.5 items-end">
-              {[5, 9, 14, 10, 18, 12, 20, 14, 16, 8, 18, 12].map((h, i) => (
-                <div key={i} className="w-1 rounded-full bg-[#6B8F71]/40" style={{ height: h }} />
-              ))}
-            </div>
-          </div>
-        </div>
+    <div
+      className="absolute pointer-events-none"
+      style={{ top: "45%", left: "50%", transform: "translate(-50%, -50%)", width: 700, height: 700 }}
+    >
+      {/* Layer 1: Outer glow with clay crossfade */}
+      <div className="orb-outer">
+        <div className="orb-clay" />
       </div>
-      <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 w-2/3 h-8 bg-[#1C1A17]/8 blur-2xl rounded-full" />
+
+      {/* Layer 2: Blur glow */}
+      <div className="orb-blur" />
+
+      {/* Layer 3: Mid glow */}
+      <div className="orb-mid" />
+
+      {/* Ripple rings */}
+      <div className="orb-ring orb-ring-1" />
+      <div className="orb-ring orb-ring-2" />
+      <div className="orb-ring orb-ring-3" />
+
+      {/* Waveform */}
+      <div className="orb-waveform">
+        {waveHeights.map((h, i) => (
+          <div
+            key={i}
+            className={`orb-wave-bar${i >= 18 ? " orb-wave-bar-extra" : ""}`}
+            style={{ height: h, animationDelay: `${(i * 0.07).toFixed(2)}s` }}
+          />
+        ))}
+      </div>
+
+      {/* Layer 4: Core + specular */}
+      <div className="orb-core">
+        <div className="orb-specular" />
+      </div>
+
+      {/* Ambient particles (hidden on mobile via CSS) */}
+      {particles.map((p, i) => (
+        <div
+          key={i}
+          className={`orb-particle orb-particle-${p.type}`}
+          style={{
+            top: p.top,
+            left: p.left,
+            width: p.size,
+            height: p.size,
+            "--dur": `${p.dur}s`,
+            "--del": `${p.del}s`,
+          } as React.CSSProperties}
+        />
+      ))}
     </div>
   );
 }
@@ -735,32 +745,6 @@ function RitualCard({
   );
 }
 
-/* ── Waveform decoration ──────────────────────────────────────────────── */
-function WaveDecoration() {
-  const heights = [4, 8, 14, 10, 18, 12, 20, 14, 16, 8, 18, 12, 10, 16, 6];
-  return (
-    <svg
-      width={heights.length * 10}
-      height="28"
-      viewBox={`0 0 ${heights.length * 10} 28`}
-      fill="none"
-      aria-hidden="true"
-    >
-      {heights.map((h, i) => (
-        <rect
-          key={i}
-          x={i * 10}
-          y={(28 - h) / 2}
-          width="5"
-          height={h}
-          rx="2.5"
-          fill="#6B8F71"
-          opacity={0.18 + (i / heights.length) * 0.3}
-        />
-      ))}
-    </svg>
-  );
-}
 
 /* ── Wave breath icon ────────────────────────────────────────────────── */
 function WaveBreathIcon() {

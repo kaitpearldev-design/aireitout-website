@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Jost } from "next/font/google";
+import { Cormorant_Garamond, Jost, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -13,6 +13,13 @@ const jost = Jost({
   variable: "--font-jost",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
+});
+
+const dmSerifDisplay = DM_Serif_Display({
+  variable: "--font-dm-serif",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -56,7 +63,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${jost.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${jost.variable} ${dmSerifDisplay.variable}`}>
       <body className="antialiased">{children}</body>
     </html>
   );

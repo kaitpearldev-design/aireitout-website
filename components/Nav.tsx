@@ -34,7 +34,7 @@ export default function Nav() {
           <NavLink href="/#privacy">Privacy</NavLink>
           <NavLink href="/#pricing">Pricing</NavLink>
           <NavLink href="/help">Help</NavLink>
-          <a href="/#download" className="text-sm font-medium text-[#FAF8F4] bg-[#1C1A17] px-5 py-2.5 rounded-full hover:bg-[#2e2b26] transition-all duration-200 tracking-wide">
+          <a href="/#download" className="text-sm font-medium text-white bg-[#6B8F71] hover:bg-[#5a7a5f] transition-all duration-200 tracking-wide" style={{ borderRadius: 24, padding: "10px 24px" }}>
             Get the App
           </a>
         </div>
