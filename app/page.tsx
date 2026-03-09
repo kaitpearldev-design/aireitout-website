@@ -149,7 +149,7 @@ export default function Home() {
               </div>
 
               <p className="reveal reveal-delay-2 text-[16px] text-[#8A8078] leading-[1.85] mb-10 max-w-[380px]" style={{ fontWeight: 300 }}>
-                Speak freely — receive a reflection that actually gets it.
+                A journal that starts with your voice. Everything else follows.
               </p>
 
               <div className="reveal reveal-delay-3 mb-8">
