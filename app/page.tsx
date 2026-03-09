@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Image from "next/image";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import DailyRituals from "@/components/DailyRituals";
 
 /* ── Scroll reveal ────────────────────────────────────────────────────── */
 function useReveal() {
@@ -182,81 +183,7 @@ export default function Home() {
       </section>
 
       {/* ── DAILY RITUALS ────────────────────────────────────────────────── */}
-      <section className="py-28 px-8 border-t border-[#1C1A17]/6" style={{ backgroundColor: "#F5F2EC" }}>
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-20 reveal">
-            <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-[#6B8F71] mb-5">
-              Daily Rituals
-            </p>
-            <h2
-              style={{ fontFamily: "var(--font-cormorant)" }}
-              className="text-[clamp(2.2rem,4vw,3.2rem)] font-light text-[#1C1A17] leading-tight"
-            >
-              Two quiet moments.{" "}
-              <em className="italic text-[#6B8F71]">One reset.</em>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-end">
-            {/* Morning */}
-            <RitualCard
-              icon={<SunIcon />}
-              tag="Free"
-              title="Morning Intention"
-              desc="Before the noise begins, name one thing that matters today. A single sentence. An anchor for whatever comes next."
-              delay=""
-            />
-            {/* Wave Breathing — elevated center */}
-            <div
-              className="lift-card reveal reveal-delay-1 bg-[#1C1A17] flex flex-col gap-5 p-10 relative overflow-hidden"
-              style={{
-                borderRadius: 20,
-                boxShadow: "0 32px 80px rgba(28,26,23,0.18)",
-                transform: "translateY(-20px)",
-              }}
-            >
-              <div
-                className="absolute inset-0 pointer-events-none opacity-[0.05]"
-                style={{
-                  backgroundImage: "radial-gradient(circle, #FAF8F4 1px, transparent 1px)",
-                  backgroundSize: "20px 20px",
-                }}
-              />
-              <div className="flex items-center justify-between relative z-10">
-                <div className="relative flex items-center justify-center w-10 h-10">
-                  <div className="breathing-ring absolute w-10 h-10 rounded-full bg-[#6B8F71]/20" />
-                  <div className="relative w-10 h-10 rounded-full border border-[#6B8F71]/40 flex items-center justify-center text-[#6B8F71]">
-                    <WaveBreathIcon />
-                  </div>
-                </div>
-                <span className="text-[10px] font-semibold tracking-[0.1em] uppercase text-[#6B8F71] border border-[#6B8F71]/35 px-2.5 py-1 rounded-full">
-                  Pro
-                </span>
-              </div>
-              <div className="relative z-10">
-                <h3
-                  style={{ fontFamily: "var(--font-cormorant)" }}
-                  className="text-[1.4rem] font-semibold text-[#FAF8F4] mb-3"
-                >
-                  Wave Breathing
-                </h3>
-                <p className="text-[14px] text-[#FAF8F4]/55 leading-[1.85]" style={{ fontWeight: 300 }}>
-                  When you need to reset, three calming patterns guide you back
-                  — 4-7-8 Calm, Box Breathing, and Quick Calm.
-                </p>
-              </div>
-            </div>
-            {/* Evening */}
-            <RitualCard
-              icon={<MoonIcon />}
-              tag="Free"
-              title="Evening Reflection"
-              desc="A gentle prompt to look back. What moved you? What are you carrying? What can you set down?"
-              delay="reveal-delay-2"
-            />
-          </div>
-        </div>
-      </section>
+      <DailyRituals />
 
       {/* ── FEATURES ────────────────────────────────────────────────────── */}
       <section id="features" className="border-t border-[#1C1A17]/6" style={{ backgroundColor: "#FAF8F4" }}>
@@ -700,111 +627,6 @@ function PhoneMockupFeature({ index }: { index: number }) {
   );
 }
 
-/* ── Ritual card ──────────────────────────────────────────────────────── */
-function RitualCard({
-  icon,
-  tag,
-  title,
-  desc,
-  delay,
-}: {
-  icon: React.ReactNode;
-  tag: string;
-  title: string;
-  desc: string;
-  delay: string;
-}) {
-  return (
-    <div
-      className={`lift-card reveal ${delay} bg-white flex flex-col gap-5 p-10`}
-      style={{
-        borderRadius: 20,
-        boxShadow: "0 4px 24px rgba(28,26,23,0.06)",
-      }}
-    >
-      <div className="flex items-center justify-between">
-        <div className="w-10 h-10 rounded-full border border-[#6B8F71]/25 flex items-center justify-center text-[#6B8F71]">
-          {icon}
-        </div>
-        <span className="text-[10px] font-semibold tracking-[0.1em] uppercase text-[#6B8F71] border border-[#6B8F71]/30 px-2.5 py-1 rounded-full">
-          {tag}
-        </span>
-      </div>
-      <div>
-        <h3
-          style={{ fontFamily: "var(--font-cormorant)" }}
-          className="text-[1.35rem] font-semibold text-[#1C1A17] mb-3"
-        >
-          {title}
-        </h3>
-        <p className="text-[14px] text-[#8A8078] leading-[1.85]" style={{ fontWeight: 300 }}>
-          {desc}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-
-/* ── Wave breath icon ────────────────────────────────────────────────── */
-function WaveBreathIcon() {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M2 12c1.5-3 3-4.5 4.5-4.5S9 9 10.5 12s3 4.5 4.5 4.5S18 15 19.5 12 21 7.5 22 7.5" />
-    </svg>
-  );
-}
-
-/* ── Sun icon ─────────────────────────────────────────────────────────── */
-function SunIcon() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-    >
-      <circle cx="12" cy="12" r="4" />
-      <line x1="12" y1="2" x2="12" y2="5" />
-      <line x1="12" y1="19" x2="12" y2="22" />
-      <line x1="4.22" y1="4.22" x2="6.34" y2="6.34" />
-      <line x1="17.66" y1="17.66" x2="19.78" y2="19.78" />
-      <line x1="2" y1="12" x2="5" y2="12" />
-      <line x1="19" y1="12" x2="22" y2="12" />
-      <line x1="4.22" y1="19.78" x2="6.34" y2="17.66" />
-      <line x1="17.66" y1="6.34" x2="19.78" y2="4.22" />
-    </svg>
-  );
-}
-
-/* ── Moon icon ────────────────────────────────────────────────────────── */
-function MoonIcon() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-    >
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-    </svg>
-  );
-}
 
 /* ── Store badges ─────────────────────────────────────────────────────── */
 function StoreBadges({ centered }: { centered?: boolean }) {

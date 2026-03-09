@@ -350,3 +350,41 @@ h1, h2, h3, h4 {
   .orb-particle { display: none; }
   .orb-wave-bar-extra { display: none; }
 }
+
+/* ── Daily Rituals section ────────────────────────────────────────────── */
+
+@keyframes tabProgress {
+  from { width: 0%;   }
+  to   { width: 100%; }
+}
+
+@keyframes ritualFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+/* Ritual waveform bars (reuse waveBar keyframe) */
+.ritual-wave-bar {
+  animation: waveBar 1.8s ease-in-out infinite;
+  transform-origin: center;
+  flex-shrink: 0;
+}
+
+/* Card hover — desktop only */
+.ritual-card {
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1),
+              box-shadow 0.35s cubic-bezier(0.16,1,0.3,1);
+}
+.ritual-desktop .ritual-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 44px rgba(28,26,23,0.1);
+}
+
+/* Responsive: desktop tabs / mobile carousel */
+.ritual-desktop { display: block; }
+.ritual-mobile  { display: none;  }
+
+@media (max-width: 679px) {
+  .ritual-desktop { display: none;  }
+  .ritual-mobile  { display: block; }
+}
