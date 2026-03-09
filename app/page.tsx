@@ -4,6 +4,7 @@ import Image from "next/image";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import DailyRituals from "@/components/DailyRituals";
+import FeaturesInteractive from "@/components/FeaturesInteractive";
 
 /* ── Scroll reveal ────────────────────────────────────────────────────── */
 function useReveal() {
@@ -47,32 +48,6 @@ const proFeatures = [
   "Memoir-style PDF + monthly PDF export",
 ];
 
-const features = [
-  {
-    tag: "AI · PRO",
-    title: "Reflections that\nactually get it.",
-    body: "Every voice entry is automatically transcribed. After saving, you receive one AI-written reflection — crafted from your words, mood, and notes. Not generic. Not templated. Yours.",
-    accent: "AI Reflections",
-  },
-  {
-    tag: "MEMORY",
-    title: "Your words become\nstars.",
-    body: "Every entry you save appears in your personal Night Sky — a living constellation of your moments. Watch it fill in. The Pro Sky reveals everything: color, mood, constellation clusters.",
-    accent: "Night Sky",
-  },
-  {
-    tag: "GROWTH · PRO",
-    title: "Go deeper with\nStar Sessions.",
-    body: "Choose a theme. Answer four guided voice prompts. When you're done, receive an AI-written synthesis of your whole session. It's like therapy homework you actually want to do.",
-    accent: "Star Sessions",
-  },
-  {
-    tag: "MEMORY",
-    title: "Seal it. Open it\nwhen the time comes.",
-    body: "Lock an entry to your future self — 7, 30, 90 days, or any custom date with Pro. When the date arrives, your entry reappears exactly as you left it. Nothing changes. Except you.",
-    accent: "Time Capsules",
-  },
-];
 
 const privacyPoints = [
   {
@@ -186,71 +161,9 @@ export default function Home() {
       <DailyRituals />
 
       {/* ── FEATURES ────────────────────────────────────────────────────── */}
-      <section id="features" className="border-t border-[#1C1A17]/6" style={{ backgroundColor: "#FAF8F4" }}>
-        <div className="max-w-5xl mx-auto px-8 pt-28 pb-14 text-center reveal">
-          <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-[#6B8F71] mb-5">
-            Features
-          </p>
-          <h2
-            style={{ fontFamily: "var(--font-cormorant)" }}
-            className="text-[clamp(2.2rem,4.5vw,3.5rem)] font-light text-[#1C1A17] leading-tight mb-4"
-          >
-            Everything you need to{" "}
-            <em className="italic text-[#6B8F71]">feel heard.</em>
-          </h2>
-          <p className="text-[15px] text-[#8A8078] leading-[1.8]">
-            Built around privacy, calm, and the moments that matter most.
-          </p>
-        </div>
-
-        {features.map((f, i) => {
-          const isEven = i % 2 === 1;
-          return (
-            <div key={f.title} className="border-t border-[#1C1A17]/6">
-              <div className="max-w-6xl mx-auto px-8 py-28">
-                <div
-                  className={`flex flex-col gap-16 items-center ${
-                    isEven ? "md:flex-row-reverse" : "md:flex-row"
-                  }`}
-                >
-                  {/* Text */}
-                  <div className="flex-1 reveal">
-                    <p className="text-[11px] font-semibold tracking-[0.15em] uppercase text-[#6B8F71] mb-5 flex items-center gap-3">
-                      {f.tag}
-                    </p>
-                    <h3
-                      style={{ fontFamily: "var(--font-cormorant)" }}
-                      className="text-[clamp(2.2rem,4vw,3rem)] font-light text-[#1C1A17] leading-[1.1] mb-6 whitespace-pre-line"
-                    >
-                      {f.title}
-                    </h3>
-                    <p
-                      className="text-[16px] text-[#8A8078] leading-[1.9] max-w-[400px] mb-8"
-                      style={{ fontWeight: 300 }}
-                    >
-                      {f.body}
-                    </p>
-                    <div className="inline-flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#6B8F71]" />
-                      <span
-                        style={{ fontFamily: "var(--font-cormorant)" }}
-                        className="text-[1.05rem] italic text-[#6B8F71]"
-                      >
-                        {f.accent}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Decorative phone */}
-                  <div className="reveal reveal-delay-1 flex-shrink-0 flex justify-center">
-                    <PhoneMockupFeature index={i} />
-                  </div>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </section>
+      <div id="features">
+        <FeaturesInteractive />
+      </div>
 
       {/* ── PRIVACY ─────────────────────────────────────────────────────── */}
       <section
@@ -542,90 +455,6 @@ function HeroOrb() {
   );
 }
 
-/* ── Phone mockup — Features ──────────────────────────────────────────── */
-function PhoneMockupFeature({ index }: { index: number }) {
-  const themes = [
-    // AI Reflections — green tint
-    { bg: "linear-gradient(150deg, #E8EDE9 0%, #DDE5DE 60%, #D5DDD6 100%)", accent: "#6B8F71" },
-    // Night Sky — deep dark
-    { bg: "linear-gradient(160deg, #1C1A17 0%, #252220 50%, #1A1917 100%)", accent: "#6B8F71" },
-    // Star Sessions — warm
-    { bg: "linear-gradient(155deg, #EDE8E0 0%, #E5DDD4 55%, #DDD5CB 100%)", accent: "#8A8078" },
-    // Time Capsules — cool
-    { bg: "linear-gradient(165deg, #E9ECE8 0%, #E1E5DF 55%, #D9DDD7 100%)", accent: "#6B8F71" },
-  ];
-
-  const t = themes[index % themes.length];
-  const isDark = index === 1;
-
-  return (
-    <div className="relative" style={{ width: 240 }}>
-      <div
-        className="rounded-[40px] overflow-hidden border-[6px] border-[#1C1A17]"
-        style={{
-          aspectRatio: "9/19.5",
-          background: t.bg,
-          boxShadow: "0 24px 60px rgba(28,26,23,0.12)",
-        }}
-      >
-        <div className="absolute top-3 left-1/2 -translate-x-1/2 w-14 h-1.5 rounded-full bg-[#1C1A17]/20" />
-        <div className="absolute inset-x-5 top-10 flex flex-col gap-3">
-          <div
-            className="h-2 w-24 rounded-full"
-            style={{ background: isDark ? "rgba(250,248,244,0.15)" : "rgba(28,26,23,0.15)" }}
-          />
-          <div
-            className="h-1.5 w-16 rounded-full"
-            style={{ background: isDark ? "rgba(250,248,244,0.08)" : "rgba(28,26,23,0.08)" }}
-          />
-
-          {/* Content blocks */}
-          <div className="flex flex-col gap-2 mt-2">
-            {[1, 2, 3].map((j) => (
-              <div
-                key={j}
-                className="rounded-2xl p-3 flex flex-col gap-1.5"
-                style={{
-                  background: isDark
-                    ? "rgba(250,248,244,0.05)"
-                    : "rgba(255,255,255,0.45)",
-                  height: j === 1 ? 64 : j === 2 ? 48 : 36,
-                }}
-              >
-                <div
-                  className="h-1.5 w-full rounded-full"
-                  style={{ background: isDark ? "rgba(250,248,244,0.1)" : "rgba(28,26,23,0.1)" }}
-                />
-                <div
-                  className="h-1.5 rounded-full"
-                  style={{
-                    width: `${70 + j * 8}%`,
-                    background: isDark ? "rgba(250,248,244,0.07)" : "rgba(28,26,23,0.07)",
-                  }}
-                />
-              </div>
-            ))}
-          </div>
-
-          {/* Accent element */}
-          <div
-            className="rounded-2xl flex items-center justify-center mt-1"
-            style={{
-              height: 40,
-              background: `${t.accent}${isDark ? "25" : "18"}`,
-              border: `1px solid ${t.accent}25`,
-            }}
-          >
-            <div
-              className="h-1.5 w-20 rounded-full"
-              style={{ background: `${t.accent}50` }}
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 
 /* ── Store badges ─────────────────────────────────────────────────────── */
