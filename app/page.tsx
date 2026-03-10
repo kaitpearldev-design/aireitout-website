@@ -26,26 +26,27 @@ function useReveal() {
 const freeFeatures = [
   "Unlimited voice recordings",
   "Morning Intention & Evening Reflection",
-  "AI Reflection (3 per day)",
-  "10 mood colors + tracking",
-  "Daily streaks & achievements",
-  "Time Capsules (7, 30 & 90-day locks)",
-  "Entry sharing with expiring links",
-  "App Lock (PIN, Face ID)",
-  "CSV export + single-entry PDF",
+  "Mood tracking & calendar",
+  "Streak counter & achievements",
+  "Time Capsules (3, 6, or 12 months)",
+  "Photos, notes & favorites",
+  "App Lock (PIN, Face ID) & auto-wipe",
+  "Daily reminders",
+  "CSV export & single-entry PDF",
+  "Share links with expiring access",
 ];
 
 const proFeatures = [
   "Everything in Free",
-  "Unlimited AI Reflections (one per entry, permanent)",
+  "Night Sky (monthly constellation, AI reflection & final thoughts)",
+  "AI Reflections on every entry",
   "Voice transcription (audio → searchable text)",
-  "Star Sessions (4 prompts + AI summary)",
-  "Weekly Mood Insights with AI narrative",
-  "Monthly Photo Album (vintage Polaroid-style)",
+  "Calm Breathing (3 guided patterns)",
+  "Weekly AI Mood Insights with narrative",
+  "Star Sessions (guided reflection + AI summary)",
+  "Photo Album (flip through memories)",
   "Custom Time Capsules (any future date)",
-  "Wave Breathing (3 guided patterns)",
-  "Full Night Sky",
-  "Memoir-style PDF + monthly PDF export",
+  "Monthly memoir-style PDF export",
 ];
 
 
@@ -55,8 +56,8 @@ const privacyPoints = [
     desc: "All entries, audio, photos, and reflections encrypted with per-user keys.",
   },
   {
-    label: "PIN lock & Face ID",
-    desc: "Configurable auto-lock: immediate, 1, 5, or 15 minutes.",
+    label: "App Lock (PIN, Face ID)",
+    desc: "Configurable lock timeout with biometric unlock. Auto-wipe deletes old entries on your schedule.",
   },
   {
     label: "Delete anytime",
@@ -83,7 +84,7 @@ export default function Home() {
       {/* ── HERO ────────────────────────────────────────────────────────── */}
       <section
         className="relative flex items-center justify-center overflow-hidden"
-        style={{ minHeight: "85vh", paddingTop: 80 }}
+        style={{ minHeight: "92vh", paddingTop: 80 }}
       >
         {/* Grain overlay */}
         <div
@@ -121,7 +122,7 @@ export default function Home() {
             }}
           >
             Say it.{" "}
-            <em style={{ color: "#6B8F71" }}>Feel it.</em>
+            <em style={{ color: "#4A7A52" }}>Feel it.</em>
             {" "}Let&nbsp;go.
           </p>
 
@@ -129,7 +130,7 @@ export default function Home() {
             className="hero-sub mb-10 leading-[1.8]"
             style={{
               fontSize: "clamp(16px, 2.5vw, 19px)",
-              color: "rgba(44,62,45,0.5)",
+              color: "rgba(44,62,45,0.65)",
               maxWidth: 460,
               fontWeight: 300,
             }}
@@ -227,9 +228,9 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 items-start">
+          <div className="grid md:grid-cols-2 gap-6 items-stretch">
             {/* Free */}
-            <div className="reveal border border-[#1C1A17]/10 rounded-3xl p-8 flex flex-col bg-white">
+            <div className="reveal border border-[#1C1A17]/10 rounded-3xl p-8 flex flex-col h-full bg-white">
               <p className="text-[10px] font-semibold tracking-[0.18em] uppercase text-[#8A8078] mb-4">
                 Free
               </p>
@@ -262,7 +263,7 @@ export default function Home() {
             </div>
 
             {/* Pro */}
-            <div className="reveal reveal-delay-1 bg-[#1C1A17] rounded-3xl p-8 flex flex-col relative overflow-hidden">
+            <div className="reveal reveal-delay-1 bg-[#1C1A17] rounded-3xl p-8 flex flex-col h-full relative overflow-hidden">
               <div
                 className="absolute inset-0 pointer-events-none opacity-[0.04]"
                 style={{

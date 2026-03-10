@@ -41,7 +41,7 @@ export default function PrivacyPage() {
               <p>If you choose to share an entry, we generate a secure expiring link. We collect view count data for shared links. Recipients of shared links can view the shared entry content.</p>
 
               <h3>Device and Usage Information</h3>
-              <p>We collect basic device information necessary to operate the app, including device type and operating system version. We do not use third-party analytics or advertising tracking tools.</p>
+              <p>We collect basic device information necessary to operate the app, including device type and operating system version. We do not use third-party analytics or advertising tracking tools. We may collect aggregate, anonymized usage data internally (such as feature usage counts) to understand how the app is used generally. This data cannot be used to identify individual users.</p>
 
               <h3>Notification Preferences</h3>
               <p>Your notification settings, reminder times, and Morning Intention cutoff times are stored locally on your device and in your account settings.</p>
@@ -55,7 +55,7 @@ export default function PrivacyPage() {
                 <li>Authenticate your identity and maintain your account</li>
                 <li>Send notifications and reminders you have enabled</li>
                 <li>Generate expiring share links for entries you choose to share</li>
-                <li>Produce aggregate, anonymized analytics to understand how the app is used generally</li>
+                <li>Produce aggregate, anonymized internal analytics to understand how the app is used generally (this data cannot be used to identify individual users)</li>
               </ul>
               <p>We do not sell, rent, or trade your personal information to any third party for any purpose.</p>
             </Section>
@@ -69,7 +69,7 @@ export default function PrivacyPage() {
             </Section>
 
             <Section title="5. AI Features">
-              <p>AI features are available to Pro subscribers only. When you use AI Reflections, Guided Prompts, or Weekly Mood Insights, the relevant text data (transcripts, mood data, entry text) is sent to OpenAI for processing. Photos and raw audio are never sent to AI services except audio sent specifically for transcription.</p>
+              <p>AI features are available to Pro subscribers only. When you use AI Reflections, Star Sessions, or Weekly Mood Insights, the relevant text data (transcripts, mood data, entry text) is sent to OpenAI for processing. Photos and raw audio are never sent to AI services except audio sent specifically for transcription.</p>
               <p>AI-generated content in Aire It Out is not medical advice, is not provided by licensed mental health professionals, and is not a substitute for professional mental health treatment or crisis support. If you are experiencing a mental health crisis, please contact the crisis resources listed in our <a href="/help#crisis-resources" className="text-[#1C1A17] underline underline-offset-2 decoration-[#1C1A17]/20 hover:decoration-[#1C1A17]/60 transition-all">Help Center</a>.</p>
             </Section>
 
@@ -84,7 +84,7 @@ export default function PrivacyPage() {
 
             <Section title="8. Data Retention and Deletion">
               <p>Your data is retained for as long as your account is active. You may delete individual entries at any time. You may delete your entire account from Settings → Account → Delete Account, which will permanently delete all of your entries, recordings, photos, and personal information within 30 days of your request.</p>
-              <p>Auto-Wipe settings you configure will automatically delete entries after your chosen inactivity period (7, 30, or 90 days). Favorited entries and sealed Time Capsules are protected from Auto-Wipe.</p>
+              <p>Auto-Wipe settings you configure will automatically delete entries after your chosen inactivity period. Favorited entries and sealed Time Capsules are protected from Auto-Wipe.</p>
             </Section>
 
             <Section title="9. Third-Party Services">
@@ -116,8 +116,7 @@ export default function PrivacyPage() {
             </Section>
 
             <Section title="11. Children's Privacy">
-              <p>Aire It Out is not directed to children under the age of 13 (or under 16 in the European Economic Area and United Kingdom). We do not knowingly collect personal information from children under these ages. If you are a parent or guardian and believe your child has provided us with personal information, please contact us at <a href="mailto:support@aireitout.app" className="text-[#1C1A17] underline underline-offset-2 decoration-[#1C1A17]/20 hover:decoration-[#1C1A17]/60 transition-all">support@aireitout.app</a> and we will delete it promptly.</p>
-              <p>While the app is rated 9+ on the App Store for technical reasons, the app is intended for users aged 13 and older. Parental guidance is recommended for users under 13.</p>
+              <p>The app is intended for users aged 13 and older (16 in the EEA/UK). We do not knowingly permit users under 13 to create accounts. If you are a parent or guardian and believe your child has provided us with personal information, please contact us at <a href="mailto:support@aireitout.app" className="text-[#1C1A17] underline underline-offset-2 decoration-[#1C1A17]/20 hover:decoration-[#1C1A17]/60 transition-all">support@aireitout.app</a> and we will delete it promptly.</p>
             </Section>
 
             <Section title="12. International Data Transfers">

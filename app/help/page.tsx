@@ -73,11 +73,11 @@ const sections = [
     items: [
       {
         q: "What's included for free?",
-        a: "Quite a lot. Free includes: unlimited voice recordings · Morning Intention and Evening Reflection daily check-ins · AI Reflection (3 per day, based on your words, mood, and notes) · 10 mood colors and tracking · Daily streaks and achievements · Time Capsules (7, 30, and 90-day locks) · Entry sharing with expiring links · Night Sky (limited view) · App Lock (PIN, Face ID, fingerprint) · Photos on entries · Favorites · Daily reminders · CSV export and single-entry PDF.",
+        a: "Quite a lot. Free includes: unlimited voice recordings · Morning Intention and Evening Reflection daily check-ins · Mood tracking and calendar · Streak counter and achievements · Time Capsules (3, 6, or 12 months) · Photos, notes, and favorites · PIN lock and auto-wipe · Daily reminders · CSV export and single-entry PDF · Share links with expiring access.",
       },
       {
         q: "What does Pro unlock?",
-        a: "Pro ($4.99/month or $39.99/year, with a 7-day free trial) gives you everything in Free, plus: unlimited AI Reflections — one permanent reflection per entry · Voice transcription (audio becomes searchable text) · Star Sessions (choose a theme, answer 4 guided voice prompts, receive an AI-written synthesis) · Weekly Mood Insights (an AI narrative of your emotional week with stats) · Guided Reflection Prompts (30 prompts across 6 themes) · Wave Breathing (3 guided patterns) · Monthly Photo Album (vintage Polaroid-style, shareable) · Custom Time Capsules (any future date you choose) · Full Night Sky · Memoir-style full PDF export · Monthly PDF export with mood-colored entry pages.",
+        a: "Pro ($4.99/month or $39.99/year, with a 7-day free trial) gives you everything in Free, plus: Night Sky (monthly constellation, AI reflection & final thoughts) · AI Reflections on every entry · Voice transcription (audio becomes searchable text) · Calm Breathing (3 guided patterns) · Weekly AI Mood Insights with narrative · Star Sessions (guided reflection + AI summary) · Photo Album (flip through memories) · Custom Time Capsules (any future date) · Monthly memoir-style PDF export.",
       },
       {
         q: "Is there a free trial for Pro?",
@@ -98,27 +98,23 @@ const sections = [
       },
       {
         q: "What are AI Reflections?",
-        a: "After saving an entry, Aire It Out generates a short, thoughtful reflection based on your words, mood, and notes. On the free plan, you get 3 AI Reflections per day. With Pro, you get one permanent AI Reflection per entry — it lives on the entry detail screen and is always there when you want to look back. Photos and raw audio are never sent to the AI.",
+        a: "After saving an entry, Aire It Out generates a short, thoughtful reflection based on your words, mood, and notes. AI Reflections are a Pro feature — you get one permanent reflection per entry, which lives on the entry detail screen and is always there when you want to look back. Photos and raw audio are never sent to the AI.",
       },
       {
         q: "What are Star Sessions?",
-        a: "Star Sessions are guided deep-reflection experiences. Choose a theme, then answer 4 voice prompts one at a time. When you finish, Aire It Out weaves everything you said into an AI-written synthesis. They're ideal for working through something difficult, marking a milestone, or going somewhere deeper than a regular entry.",
+        a: "Star Sessions are guided deep-reflection experiences. Choose a theme, work through a series of voice prompts, and when you finish, Aire It Out weaves everything you said into an AI-written summary. They're ideal for working through something difficult, marking a milestone, or going somewhere deeper than a regular entry.",
       },
       {
         q: "What are Weekly Mood Insights?",
         a: "Each week, Aire It Out puts together a mood breakdown — your emotional patterns, top moods, streak data, and an AI-written narrative of how your week felt. Morning Intention data is included alongside your regular entries. You can refresh your Insights up to 2 times per week.",
       },
       {
-        q: "What are Guided Reflection Prompts?",
-        a: "30 thoughtfully written prompts across 6 themes to help you find something to say when you're not sure where to start: Gratitude · Shadow Work · Processing Emotions · Self-Awareness · Looking Forward · Relationships.",
+        q: "What is Calm Breathing?",
+        a: "Calm Breathing is a guided breathwork feature with three patterns: 4-7-8 Calm (inhale 4 seconds, hold 7, exhale 8 — good for anxiety and winding down before sleep), Box Breathing (inhale 4, hold 4, exhale 4, hold 4 — good for focus and stress), and Quick Calm (a shorter pattern for moments when you need fast relief).",
       },
       {
-        q: "What is Wave Breathing?",
-        a: "Wave Breathing is a guided breathwork feature with three patterns: 4-7-8 Calm (inhale 4 seconds, hold 7, exhale 8 — good for anxiety and winding down before sleep), Box Breathing (inhale 4, hold 4, exhale 4, hold 4 — good for focus and stress), and Quick Calm (a shorter pattern for moments when you need fast relief).",
-      },
-      {
-        q: "What is the Monthly Photo Album?",
-        a: "A dedicated gallery that collects all photos attached to your entries, displayed in a vintage Polaroid-style grid. Browse by month and tap any photo to open the entry it belongs to. The album is shareable.",
+        q: "What is the Photo Album?",
+        a: "A dedicated gallery that collects all photos attached to your entries so you can flip through memories in one place. Tap any photo to open the entry it belongs to.",
       },
       {
         q: "Is Aire It Out a therapy app?",
@@ -131,7 +127,7 @@ const sections = [
     items: [
       {
         q: "What are Time Capsules?",
-        a: "Time Capsules let you seal an entry so it's locked and hidden until a future date — like writing a letter to your future self. Free users can seal entries for 7, 30, or 90 days. Pro users can choose any custom future date they like.",
+        a: "Time Capsules let you seal an entry so it's locked and hidden until a future date — like writing a letter to your future self. Free users can seal entries for 3, 6, or 12 months. Pro users can choose any custom future date they like.",
       },
       {
         q: "What happens when a Time Capsule unlocks?",
@@ -148,7 +144,15 @@ const sections = [
     items: [
       {
         q: "What is the Night Sky?",
-        a: "The Night Sky is a visual map of your journal — each entry becomes a star, forming a personal constellation that grows with you over time. Free users see a limited view. Pro unlocks the full sky: every entry, every star, the complete picture of everything you've written.",
+        a: "The Night Sky is a monthly end-of-month experience with three parts. The Star Constellation is a visual map of your month — each entry becomes a mood-colored star. Use the replay slider to watch your month unfold, and toggle constellation lines to see how your stars connect. AI Reflection is a monthly AI-written narrative that surfaces the themes, emotional patterns, and moments that defined your month. Final Thoughts is a voice recording to close out the month in your own words — a spoken bookmark before the next month begins. Night Sky is a Pro feature.",
+      },
+      {
+        q: "What is the Night Sky AI Reflection?",
+        a: "The AI Reflection is a monthly narrative generated from your entries — it surfaces the themes, emotional patterns, and moments that defined your month. Once generated, your reflection is cached so you can revisit it anytime without using another generation.",
+      },
+      {
+        q: "What are Final Thoughts?",
+        a: "Final Thoughts is a monthly closing ritual inside the Night Sky. Tap \"Final Thoughts\" to record a voice memo reflecting on your month. This recording is stored on your device only — not synced, not transcribed, and not processed by AI. You can re-record or share it anytime.",
       },
     ],
   },
@@ -165,7 +169,7 @@ const sections = [
       },
       {
         q: "How do I export my entries?",
-        a: "Single Entry PDF (Free) — open any entry and tap Export to save a formatted PDF of that entry. CSV Export (Free) — download all your entries as a spreadsheet including date, mood, transcript, and notes. Memoir-style Full PDF Export (Pro) — export your entire journal as a beautifully formatted document with a cover page, chapter dividers, photos, transcripts, and AI reflections. Monthly PDF Export (Pro) — export a single month as a formatted PDF with a cover page and mood-colored entry pages.",
+        a: "Single Entry PDF (Free) — open any entry and tap Export to save a formatted PDF of that entry. CSV Export (Free) — download all your entries as a spreadsheet including date, mood, transcript, and notes. Monthly Memoir-style PDF Export (Pro) — export a month as a beautifully formatted document with a cover page, photos, transcripts, and AI reflections.",
       },
     ],
   },

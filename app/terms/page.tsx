@@ -40,36 +40,28 @@ export default function TermsPage() {
             <Section title="4. Free and Pro Tiers">
               <h3>Free Tier includes:</h3>
               <ul>
-                <li>Up to 3 voice or text entries per day</li>
-                <li>Mood tracking (10 mood states)</li>
-                <li>Calendar and Day View</li>
-                <li>Streaks and Achievements</li>
+                <li>Unlimited voice recordings</li>
                 <li>Morning Intention and Evening Reflection</li>
-                <li>AI Reflection (3 per day)</li>
-                <li>Night Sky (limited)</li>
-                <li>Daily reminders and notification customization</li>
-                <li>App Lock (PIN, Face ID, fingerprint)</li>
-                <li>Time Capsules (7, 30, and 90-day options)</li>
-                <li>Entry sharing with expiring links</li>
-                <li>Photos on entries</li>
-                <li>Favorites</li>
-                <li>Single entry PDF export</li>
-                <li>CSV export of all entries</li>
+                <li>Mood tracking and calendar</li>
+                <li>Streak counter and achievements</li>
+                <li>Time Capsules (3, 6, or 12 month options)</li>
+                <li>Photos, notes, and favorites</li>
+                <li>PIN lock and auto-wipe</li>
+                <li>Daily reminders</li>
+                <li>CSV export and single-entry PDF</li>
+                <li>Share links with expiring access</li>
               </ul>
               <h3>Pro Tier includes everything in Free, plus:</h3>
               <ul>
-                <li>Unlimited entries per day</li>
-                <li>Voice transcription (automatic + manual re-transcribe)</li>
-                <li>AI Reflections (one permanent reflection per entry)</li>
-                <li>Guided Reflection Prompts (30 prompts, 6 categories)</li>
-                <li>Wave Breathing (3 guided patterns)</li>
-                <li>Weekly Mood Insights with AI narrative</li>
-                <li>Star Sessions (guided deep-reflection + AI summary)</li>
-                <li>Monthly Photo Album (vintage Polaroid-style)</li>
+                <li>Night Sky (entries become stars)</li>
+                <li>AI Reflections on every entry</li>
+                <li>Voice transcription (audio → searchable text)</li>
+                <li>Calm Breathing (3 guided patterns)</li>
+                <li>Weekly AI Mood Insights with narrative</li>
+                <li>Star Sessions (guided reflection + AI summary)</li>
+                <li>Photo Album (flip through memories)</li>
                 <li>Custom Time Capsules (any future date)</li>
-                <li>Full Night Sky</li>
-                <li>Full memoir-style PDF export</li>
-                <li>Monthly PDF export</li>
+                <li>Monthly memoir-style PDF export</li>
               </ul>
             </Section>
 
@@ -93,7 +85,7 @@ export default function TermsPage() {
             </Section>
 
             <Section title="8. AI-Generated Content Disclaimer">
-              <p>AI features in Aire It Out (including AI Reflections, Guided Prompts, and Weekly Mood Insights) are provided for personal reflection and journaling purposes only.</p>
+              <p>AI features in Aire It Out (including AI Reflections, Star Sessions, and Weekly Mood Insights) are provided for personal reflection and journaling purposes only.</p>
               <p>AI-generated content in Aire It Out:</p>
               <ul>
                 <li>Is not medical advice</li>
@@ -163,7 +155,11 @@ export default function TermsPage() {
               <p>These Terms, together with the Privacy Policy, constitute the entire agreement between you and Aire It Out regarding the Service. If any provision of these Terms is found to be unenforceable, the remaining provisions will continue in full force and effect. Our failure to enforce any right or provision of these Terms will not constitute a waiver of that right or provision. You may not assign your rights under these Terms without our prior written consent.</p>
             </Section>
 
-            <Section title="19. Contact">
+            <Section title="19. Apple App Store — Additional Terms">
+              <p>For iOS users: These Terms serve as the End User License Agreement (EULA) for Aire It Out. Apple is not a party to this EULA and has no obligation to provide maintenance or support for the App. In the event of any failure to conform to any applicable warranty, you may notify Apple and Apple will refund the purchase price, if any. Apple has no other warranty obligation. Apple is not responsible for addressing any claims relating to the App, including product liability, consumer protection, or intellectual property claims. Apple and its subsidiaries are third-party beneficiaries of this EULA and may enforce it against you.</p>
+            </Section>
+
+            <Section title="20. Contact">
               <p>For any questions, concerns, or notices regarding these Terms, please contact us at:</p>
               <p><a href="mailto:support@aireitout.app" className="text-[#1C1A17] underline underline-offset-2 decoration-[#1C1A17]/20 hover:decoration-[#1C1A17]/60 transition-all">support@aireitout.app</a></p>
             </Section>

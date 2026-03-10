@@ -161,8 +161,8 @@ h1, h2, h3, h4 {
 
 /* Inner core box-shadow pulse */
 @keyframes coreGlow {
-  0%, 100% { box-shadow: 0 0 80px 30px rgba(107,143,113,0.35), 0 0 40px 15px rgba(107,143,113,0.2); }
-  50%       { box-shadow: 0 0 100px 40px rgba(107,143,113,0.45), 0 0 55px 20px rgba(107,143,113,0.28); }
+  0%, 100% { box-shadow: 0 0 100px 40px rgba(107,143,113,0.5), 0 0 50px 20px rgba(107,143,113,0.3); }
+  50%       { box-shadow: 0 0 130px 55px rgba(107,143,113,0.6), 0 0 65px 25px rgba(107,143,113,0.35); }
 }
 
 /* Specular highlight float */
@@ -227,7 +227,7 @@ h1, h2, h3, h4 {
   width: 700px;
   height: 700px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(107,143,113,0.45) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(107,143,113,0.65) 0%, transparent 65%);
   animation: orbPulse 4.5s ease-in-out infinite;
 }
 .orb-clay {
@@ -245,7 +245,7 @@ h1, h2, h3, h4 {
   width: 600px;
   height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(107,143,113,0.5) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(107,143,113,0.7) 0%, transparent 60%);
   filter: blur(80px);
   animation: orbBreathe 6s ease-in-out infinite;
 }
@@ -257,7 +257,7 @@ h1, h2, h3, h4 {
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(107,143,113,0.35) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(107,143,113,0.55) 0%, transparent 55%);
   filter: blur(30px);
   animation: orbPulse 4.5s ease-in-out 0.5s infinite;
 }
@@ -290,7 +290,7 @@ h1, h2, h3, h4 {
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  border: 1.5px solid rgba(107,143,113,0.4);
+  border: 1.5px solid rgba(107,143,113,0.6);
 }
 .orb-ring-1 { animation: ring1Expand 3.5s ease-out infinite; }
 .orb-ring-2 { border-width: 1px;   border-color: rgba(107,143,113,0.3); animation: ring2Expand 3.5s ease-out 0.9s infinite; }
@@ -353,16 +353,6 @@ h1, h2, h3, h4 {
 
 /* ── Daily Rituals section ────────────────────────────────────────────── */
 
-@keyframes tabProgress {
-  from { width: 0%;   }
-  to   { width: 100%; }
-}
-
-@keyframes ritualFadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: translateY(0);   }
-}
-
 /* Ritual waveform bars (reuse waveBar keyframe) */
 .ritual-wave-bar {
   animation: waveBar 1.8s ease-in-out infinite;
@@ -380,11 +370,11 @@ h1, h2, h3, h4 {
   box-shadow: 0 14px 44px rgba(28,26,23,0.1);
 }
 
-/* Responsive: desktop tabs / mobile carousel */
-.ritual-desktop { display: block; }
-.ritual-mobile  { display: none;  }
+/* Responsive: desktop grid / mobile stack */
+.ritual-desktop { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.ritual-mobile  { display: none; flex-direction: column; gap: 16px; }
 
 @media (max-width: 679px) {
   .ritual-desktop { display: none;  }
-  .ritual-mobile  { display: block; }
+  .ritual-mobile  { display: flex;  }
 }
