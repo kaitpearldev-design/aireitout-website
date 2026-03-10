@@ -131,7 +131,7 @@ const sections = [
       },
       {
         q: "What happens when a Time Capsule unlocks?",
-        a: "When the unlock date arrives, you'll get a notification that your capsule is ready. Open it to read your past entry. From there you can save it to your journal, reseal it for another period, or let it go.",
+        a: "You'll receive a push notification when your capsule is ready. A badge also appears on the Capsules tab on your dashboard. You can also discover unlocked capsules in the Night Sky — look for \"Ready to open\" on the star. When you open an unlocked capsule, you can save it as a regular entry, re-seal it for a new date, or let it go.",
       },
       {
         q: "Are Time Capsules protected from Auto-Wipe?",
@@ -165,7 +165,7 @@ const sections = [
       },
       {
         q: "Can I revoke a shared link?",
-        a: "Yes. Go to the entry, tap Share, and revoke the link at any time. Once revoked, it stops working for anyone who has it.",
+        a: "Yes. On the entry detail screen, you'll see any active share links with their expiry type, creation date, and time remaining. Tap \"Revoke\" to remove access immediately — anyone with the link will see a message that access has been removed. Expired links are cleaned up automatically.",
       },
       {
         q: "How do I export my entries?",
