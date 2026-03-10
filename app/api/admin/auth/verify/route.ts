@@ -7,7 +7,7 @@ export async function POST(request: NextRequest) {
   const body = await request.json().catch(() => ({}));
   const { code } = body as { code?: string };
 
-  if (!code || !verifyAndConsumeCode(code)) {
+  if (!code || !(await verifyAndConsumeCode(code))) {
     return NextResponse.json(
       { error: "Incorrect code. Please try again." },
       { status: 401 }

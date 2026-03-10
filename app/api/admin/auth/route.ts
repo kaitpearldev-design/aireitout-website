@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
   }
 
   const code = generateCode();
-  storeCode(code);
+  await storeCode(code);
 
   try {
     await sendVerificationCode(code);

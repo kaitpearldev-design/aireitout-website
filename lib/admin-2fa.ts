@@ -1,30 +1,42 @@
-/** In-memory 2FA code store. Works for single-process deployments. */
+/** Firestore-backed 2FA code store. Works across serverless instances. */
 
-type CodeEntry = { code: string; expiresAt: number };
+import { getDb } from "@/lib/firebase-admin";
 
-const store = new Map<string, CodeEntry>();
-const ADMIN_KEY = "admin";
+const DOC_PATH = "admin_2fa/current";
 const TTL_MS = 10 * 60 * 1000; // 10 minutes
 
 export function generateCode(): string {
   return String(Math.floor(100000 + Math.random() * 900000));
 }
 
-export function storeCode(code: string): void {
-  for (const [k, v] of store) {
-    if (Date.now() > v.expiresAt) store.delete(k);
-  }
-  store.set(ADMIN_KEY, { code, expiresAt: Date.now() + TTL_MS });
+export async function storeCode(code: string): Promise<void> {
+  const db = getDb();
+  await db.doc(DOC_PATH).set({
+    code,
+    expiresAt: Date.now() + TTL_MS,
+    createdAt: Date.now(),
+  });
 }
 
-export function verifyAndConsumeCode(code: string): boolean {
-  const entry = store.get(ADMIN_KEY);
-  if (!entry) return false;
-  if (Date.now() > entry.expiresAt) {
-    store.delete(ADMIN_KEY);
+export async function verifyAndConsumeCode(code: string): Promise<boolean> {
+  const db = getDb();
+  const ref = db.doc(DOC_PATH);
+  const snap = await ref.get();
+
+  if (!snap.exists) return false;
+
+  const { code: stored, expiresAt } = snap.data() as {
+    code: string;
+    expiresAt: number;
+  };
+
+  if (Date.now() > expiresAt) {
+    await ref.delete();
     return false;
   }
-  if (entry.code !== code) return false;
-  store.delete(ADMIN_KEY); // one-time use
+
+  if (stored !== code) return false;
+
+  await ref.delete(); // one-time use
   return true;
 }
