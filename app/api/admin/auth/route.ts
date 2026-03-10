@@ -30,6 +30,9 @@ export async function POST(request: NextRequest) {
   const { password } = body as { password?: string };
 
   const adminPassword = process.env.ADMIN_PASSWORD;
+  console.log("Password length from env:", adminPassword?.length);
+  console.log("Password length from input:", password?.length);
+  console.log("Match:", password === adminPassword);
   if (!adminPassword || !password || password !== adminPassword) {
     return NextResponse.json({ error: "Incorrect password" }, { status: 401 });
   }
