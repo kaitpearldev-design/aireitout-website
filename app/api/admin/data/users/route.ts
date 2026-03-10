@@ -39,6 +39,7 @@ export async function GET(request: NextRequest) {
         email: d.email ?? "—",
         createdAt: d.createdAt?.toDate?.()?.toISOString() ?? null,
         isPro: d.isPro ?? false,
+        isAdmin: d.isAdmin ?? false,
         streak: d.streak ?? 0,
         entryCount: d.entryCount ?? 0,
         lastActive: d.lastActive?.toDate?.()?.toISOString() ?? null,

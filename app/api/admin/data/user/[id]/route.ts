@@ -2,6 +2,25 @@ import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/firebase-admin";
 import { getSubscriber } from "@/lib/revenuecat";
 
+export async function PATCH(
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params;
+  try {
+    const body = await req.json();
+    if (typeof body.isAdmin !== "boolean") {
+      return NextResponse.json({ error: "isAdmin must be a boolean" }, { status: 400 });
+    }
+    const db = getDb();
+    await db.collection("users").doc(id).update({ isAdmin: body.isAdmin });
+    return NextResponse.json({ ok: true, isAdmin: body.isAdmin });
+  } catch (err) {
+    console.error("[user/id PATCH]", err);
+    return NextResponse.json({ error: String(err) }, { status: 500 });
+  }
+}
+
 export async function GET(
   _req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -32,6 +51,7 @@ export async function GET(
       email: d.email ?? "—",
       createdAt: d.createdAt?.toDate?.()?.toISOString() ?? null,
       isPro: d.isPro ?? false,
+      isAdmin: d.isAdmin ?? false,
       streak: d.streak ?? 0,
       entryCount: d.entryCount ?? 0,
       lastActive: d.lastActive?.toDate?.()?.toISOString() ?? null,

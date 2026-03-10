@@ -37,6 +37,7 @@ export async function GET() {
       trialsStartedWeekSnap,
       trialsConvertedWeekSnap,
       newSubsMonthSnap,
+      adminProSnap,
     ] = await Promise.all([
       db.collection("users").where("isPro", "==", true).count().get(),
       db
@@ -81,13 +82,15 @@ export async function GET() {
         .where("subscriptionStartDate", ">=", monthAgo)
         .count()
         .get(),
+      db.collection("users").where("isAdmin", "==", true).where("isPro", "==", true).count().get(),
     ]);
 
+    const adminProCount = adminProSnap.data().count;
     const monthlyCount = monthlySnap.data().count;
     const annualCount = annualSnap.data().count;
-    const totalPro = totalProSnap.data().count;
+    const totalPro = totalProSnap.data().count - adminProCount;
     // Remaining pro users without a known subscription type
-    const unknownCount = totalPro - monthlyCount - annualCount;
+    const unknownCount = Math.max(0, totalPro - monthlyCount - annualCount);
 
     const mrr = +(
       monthlyCount * MONTHLY_PRICE +
@@ -101,6 +104,7 @@ export async function GET() {
       mrr,
       arrEstimate,
       totalProSubscribers: totalPro,
+      adminAccountCount: adminProCount,
       monthlySubscribers: monthlyCount,
       annualSubscribers: annualCount,
       newSubsThisWeek: newSubsWeekSnap.data().count,

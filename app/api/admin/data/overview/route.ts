@@ -9,7 +9,7 @@ export async function GET() {
       new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
     );
 
-    const [totalSnap, proSnap, entriesSnap, newUsersSnap, activeSnap] =
+    const [totalSnap, proSnap, entriesSnap, newUsersSnap, activeSnap, adminSnap, adminProSnap] =
       await Promise.all([
         db.collection("users").count().get(),
         db.collection("users").where("isPro", "==", true).count().get(),
@@ -24,10 +24,14 @@ export async function GET() {
           .where("lastActive", ">=", weekAgo)
           .count()
           .get(),
+        db.collection("users").where("isAdmin", "==", true).count().get(),
+        db.collection("users").where("isAdmin", "==", true).where("isPro", "==", true).count().get(),
       ]);
 
-    const totalUsers = totalSnap.data().count;
-    const proUsers = proSnap.data().count;
+    const adminAccountCount = adminSnap.data().count;
+    const adminProCount = adminProSnap.data().count;
+    const totalUsers = totalSnap.data().count - adminAccountCount;
+    const proUsers = proSnap.data().count - adminProCount;
 
     // Estimated MRR — assumes all Pro users are on monthly plan.
     // For accurate MRR, use RevenueCat dashboard or sync subscription type
@@ -41,6 +45,7 @@ export async function GET() {
       newUsersThisWeek: newUsersSnap.data().count,
       activeUsersLast7Days: activeSnap.data().count,
       estimatedMrr,
+      adminAccountCount,
     });
   } catch (err) {
     console.error("[overview]", err);

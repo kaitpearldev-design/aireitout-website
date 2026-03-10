@@ -9,6 +9,7 @@ type User = {
   email: string;
   createdAt: string | null;
   isPro: boolean;
+  isAdmin: boolean;
   streak: number;
   entryCount: number;
   lastActive: string | null;
@@ -30,6 +31,27 @@ export default function UsersPage() {
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
+  const [togglingId, setTogglingId] = useState<string | null>(null);
+
+  async function toggleAdmin(user: User) {
+    setTogglingId(user.id);
+    try {
+      const res = await fetch(`/api/admin/data/user/${user.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ isAdmin: !user.isAdmin }),
+      });
+      const d = await res.json();
+      if (d.error) throw new Error(d.error);
+      setUsers((prev) =>
+        prev.map((u) => (u.id === user.id ? { ...u, isAdmin: d.isAdmin } : u))
+      );
+    } catch (e) {
+      alert("Failed to update: " + String(e));
+    } finally {
+      setTogglingId(null);
+    }
+  }
 
   useEffect(() => {
     setLoading(true);
@@ -110,7 +132,7 @@ export default function UsersPage() {
             <table className="w-full text-[13px]">
               <thead>
                 <tr className="border-b border-[#1C1A17]/6 bg-[#F8F7F4]">
-                  {["Email", "Joined", "Plan", "Streak", "Entries", "Last Active"].map(
+                  {["Email", "Joined", "Plan", "Streak", "Entries", "Last Active", "Admin"].map(
                     (h) => (
                       <th
                         key={h}
@@ -160,6 +182,20 @@ export default function UsersPage() {
                     </td>
                     <td className="px-4 py-3 text-[#8A8078]">
                       {fmt(user.lastActive)}
+                    </td>
+                    <td className="px-4 py-3">
+                      <button
+                        onClick={(e) => { e.preventDefault(); toggleAdmin(user); }}
+                        disabled={togglingId === user.id}
+                        className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold tracking-wide uppercase transition-colors ${
+                          user.isAdmin
+                            ? "bg-amber-100 text-amber-700 hover:bg-amber-200"
+                            : "bg-[#1C1A17]/5 text-[#8A8078] hover:bg-[#1C1A17]/10"
+                        } disabled:opacity-40`}
+                        title={user.isAdmin ? "Click to remove admin flag" : "Click to flag as admin/test"}
+                      >
+                        {togglingId === user.id ? "…" : user.isAdmin ? "Admin" : "Flag"}
+                      </button>
                     </td>
                   </tr>
                 ))}

@@ -10,6 +10,7 @@ type OverviewData = {
   newUsersThisWeek: number;
   activeUsersLast7Days: number;
   estimatedMrr: number;
+  adminAccountCount: number;
 };
 
 function StatCard({
@@ -106,6 +107,15 @@ export default function OverviewPage() {
       )}
 
       {data && !loading && (
+        <>
+        {data.adminAccountCount > 0 && (
+          <div className="mb-4 px-3 py-2 rounded-lg bg-amber-50 border border-amber-100 text-[12px] text-amber-700 inline-flex items-center gap-1.5">
+            <span>⚠</span>
+            <span>
+              Excluding {data.adminAccountCount} admin/test account{data.adminAccountCount !== 1 ? "s" : ""} from all stats.
+            </span>
+          </div>
+        )}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
           <StatCard label="Total Users" value={data.totalUsers.toLocaleString()} />
           <StatCard
@@ -134,6 +144,7 @@ export default function OverviewPage() {
             sub={`${data.totalUsers > 0 ? ((data.activeUsersLast7Days / data.totalUsers) * 100).toFixed(1) : 0}% of users`}
           />
         </div>
+        </>
       )}
     </div>
   );

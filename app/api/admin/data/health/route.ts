@@ -14,6 +14,7 @@ export async function GET() {
       zeroEntriesSnap,
       deletedWeekSnap,
       totalUsersSnap,
+      adminSnap,
     ] = await Promise.all([
       // Averages for entries and streak across all users
       db
@@ -37,10 +38,12 @@ export async function GET() {
         .count()
         .get(),
       db.collection("users").count().get(),
+      db.collection("users").where("isAdmin", "==", true).count().get(),
     ]);
 
     const aggData = avgSnap.data();
-    const totalUsers = totalUsersSnap.data().count;
+    const adminAccountCount = adminSnap.data().count;
+    const totalUsers = totalUsersSnap.data().count - adminAccountCount;
 
     // Top features by entry type counts
     const [voiceSnap, photoSnap, timeCapsuleSnap, shareSnap] =
@@ -72,6 +75,7 @@ export async function GET() {
       usersWithZeroEntries: zeroEntriesSnap.data().count,
       deletedAccountsThisWeek: deletedWeekSnap.data().count,
       totalUsers,
+      adminAccountCount,
       topFeatures: features,
     });
   } catch (err) {
